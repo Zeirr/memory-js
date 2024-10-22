@@ -23,7 +23,7 @@ li a:hover {
   background-color: #111;
 }
 body {
-  background-color: aqua;
+  background-color: rgb(15, 55, 71);
 }
 img {
   display: block;
@@ -45,21 +45,38 @@ div.cadre-pres {
   align-items: stretch;
 }
 
-div.texte-descript{
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    font-size:  14px;
-    row-gap: 1px;
-
+div.texte-descript {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  font-size: 14px;
+  row-gap: 1px;
 }
 
-p.gras{
-    font-weight: bolder;
+p.gras {
+  font-weight: bolder;
 }
 
-div.form{
-   
-    
-    
+.grid {
+  max-width: 960px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.card {
+  display: flex;
+  margin: 5px;
+  height: 150px;
+  width: 150px;
+}
+
+.match {
+  border: 4px solid red;
+  background-image: none !important;
+}
+.selected {
+  border: 4px solid blue;
+
+
 }
