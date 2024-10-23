@@ -1,7 +1,12 @@
 import { flattenAndShuffle } from "./function.js";
 
 //   // Initialisation d'un tableau 4x5
-
+let firstGuess = "";
+let countMatch = 0;
+let secondGuess = "";
+let count = 0;
+let previousTarget = null;
+let delay = 1200;
 let tableJeu = [
   ["img/1.jpg", "img/1.jpg", "img/2.jpg", "img/2.jpg", "img/3.jpg"],
   ["img/9.jpg", "img/8.jpg", "img/6.jpg", "img/5.jpg", "img/3.jpg"],
@@ -31,25 +36,81 @@ function affichagePlateau() {
 document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("play").addEventListener("click", affichagePlateau);
 });
-let count = 0;
+
+const match = () => {
+  let selected = document.querySelectorAll(".selected");
+
+  selected.forEach((imgElement) => {
+    imgElement.classList.add("match");
+    countMatch++
+    console.log(countMatch)
+    if (countMatch == 20) {
+      alert("Cest gagné !");
+    }
+  });
+};
+
+
+const resetGuesses = () => {
+  firstGuess = "";
+  secondGuess = "";
+  count = 0;
+
+  let selected = document.querySelectorAll(".selected");
+  selected.forEach((imgElement) => {
+    imgElement.classList.remove("selected");
+    imgElement.src = "img/dos.jpg";
+  });
+  
+};
+const resetGuessesAfterMatch = () => {
+  firstGuess = "";
+  secondGuess = "";
+  count = 0;
+
+  let selected = document.querySelectorAll(".selected");
+  selected.forEach((imgElement) => {
+    imgElement.classList.remove("selected");
+    
+  });
+};
+
 // Add event listener to grid
 gridContainer.addEventListener("click", function (event) {
   // The event target is our clicked item
-  
+
   let clicked = event.target;
 
   // Do not allow the grid section itself to be selected; only select divs inside the grid
-  if (clicked.nodeName === "SECTION") {
+  if (clicked.nodeName === "SECTION" || clicked === previousTarget) {
     return;
   }
 
   if (count < 2) {
     count++;
     // Add selected class
-
-    clicked.classList.add("selected");
-
-    
+    if (count === 1) {
+      // Assign first guess
+      firstGuess = clicked.dataset.image;
+      clicked.classList.add("selected");
+      clicked.src = clicked.dataset.image;
+    } else {
+      // Assign second guess
+      secondGuess = clicked.dataset.image;
+      clicked.classList.add("selected");
+      clicked.src = clicked.dataset.image;
+    }
+    // If both guesses are not empty...
+    if (firstGuess !== "" && secondGuess !== "") {
+      // and the first guess matches the second match...
+      if (firstGuess === secondGuess) {
+        // run the match function
+        setTimeout(match, delay);
+        setTimeout(resetGuessesAfterMatch, delay);
+      } else {
+        setTimeout(resetGuesses, delay);
+      }
+    }
+    previousTarget = clicked;
   }
- 
 });
