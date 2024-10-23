@@ -12,15 +12,48 @@
       <li class="li-navbar"><a href="index.html">Accueil</a></li>
       <li class="li-navbar"><a href="inscription.html">S'inscrire</a></li>
       <li class="li-navbar"><a href="connection.html">Se connecter</a></li>
-      <li class="li-navbar" aria-current="page"><a href="profil.html">Profil</a></li>
+      <li class="li-navbar" aria-current="page">
+        <a href="profil.html">Profil</a>
+      </li>
       <li class="li-navbar">
         <a href="play.html">Jouer</a>
       </li>
     </ul>
-    <div class="cadre-pres">
-      
+    <br />
+    <div class="cadre-profil">
+      <div class="profil">
+        <h2>Profil</h2>
+        <img
+          class="photo-profil"
+          src="img/photoProfil.png"
+          alt="profil"
+        /><br />
+        <ul class="texte-profil">
+          <p>Nom d'utilisateur</p>
+          <p>***</p>
+          <hr>
+          <p>email</p>
+          <p>***</p>
+          <hr>
+
+          <label for="tailles">Choisissez le memory :</label>
+          <select name="Taille-memory" id="taille">
+            <option value="taille1">Dinosaures</option>
+            <option value="taille2">Légumes</option>
+          </select>
+
+          <label for="tailles">Choisissez la taille du memory :</label>
+          <select name="Taille-memory" id="taille">
+            <option value="taille1">2x2</option>
+            <option value="taille2">3x3</option>
+            <option value="taille3">4x4</option>
+            <option value="taille4">4x5</option>
+          </select>
+          <button>Enregistrez l'option</button>
+        </ul>
+      </div>
     </div>
 
-    <script type="module" src="js/app.js"></script>
+    <script type="module" src="js/profil.js"></script>
   </body>
 </html>
