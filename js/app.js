@@ -10,26 +10,84 @@ function init() {
   let count = 0;
   let previousTarget = null;
   let delay = 1200;
-  let tableJeu =[]
- 
-switch (localStorage.getItem("type-memory")) {
-  case "Dinosaures":
-    tableJeu = [
-      ["img/1.jpg", "img/1.jpg", "img/2.jpg", "img/2.jpg", "img/3.jpg"],
-      ["img/9.jpg", "img/8.jpg", "img/6.jpg", "img/5.jpg", "img/3.jpg"],
-      ["img/10.jpg", "img/8.jpg", "img/7.jpg", "img/5.jpg", "img/4.jpg"],
-      ["img/10.jpg", "img/9.jpg", "img/7.jpg", "img/6.jpg", "img/4.jpg"],
-    ];
-    break;
-  case "animaux":
-    tableJeu = [
-      ["img/a1.jpg", "img/a1.jpg", "img/a2.jpg", "img/a2.jpg", "img/a3.jpg"],
-      ["img/a9.jpg", "img/a8.jpg", "img/a6.jpg", "img/a5.jpg", "img/a3.jpg"],
-      ["img/a10.jpg", "img/a8.jpg", "img/a7.jpg", "img/a5.jpg", "img/a4.jpg"],
-      ["img/a10.jpg", "img/a9.jpg", "img/a7.jpg", "img/a6.jpg", "img/a4.jpg"],
-    ];
-    break;
-}
+  let tableJeu = [];
+
+  switch (localStorage.getItem("type-memory")) {
+    case "Dinosaures":
+      switch (localStorage.getItem("taille")) {
+        case "4x3":
+          tableJeu = [
+            ["img/1.jpg", "img/1.jpg", "img/2.jpg", "img/2.jpg", "img/3.jpg"],
+            ["img/5.jpg", "img/5.jpg", "img/4.jpg", "img/4.jpg", "img/3.jpg"],
+            ["img/6.jpg", "img/6.jpg"],
+          ];
+          break;
+        case "4x5":
+          tableJeu = [
+            ["img/1.jpg", "img/1.jpg", "img/2.jpg", "img/2.jpg", "img/3.jpg"],
+            ["img/9.jpg", "img/8.jpg", "img/6.jpg", "img/5.jpg", "img/3.jpg"],
+            ["img/10.jpg", "img/8.jpg", "img/7.jpg", "img/5.jpg", "img/4.jpg"],
+            ["img/10.jpg", "img/9.jpg", "img/7.jpg", "img/6.jpg", "img/4.jpg"],
+          ];
+          break;
+      }
+      break;
+    case "animaux":
+      switch (localStorage.getItem("taille")) {
+        case "4x3":
+          tableJeu = [
+            [
+              "img/a1.jpg",
+              "img/a1.jpg",
+              "img/a2.jpg",
+              "img/a2.jpg",
+              "img/a3.jpg",
+            ],
+            [
+              "img/a5.jpg",
+              "img/a5.jpg",
+              "img/a4.jpg",
+              "img/a4.jpg",
+              "img/a3.jpg",
+            ],
+            ["img/a6.jpg", "img/a6.jpg"],
+          ];
+          break;
+        case "4x5":
+          tableJeu = [
+            [
+              "img/a1.jpg",
+              "img/a1.jpg",
+              "img/a2.jpg",
+              "img/a2.jpg",
+              "img/a3.jpg",
+            ],
+            [
+              "img/a9.jpg",
+              "img/a8.jpg",
+              "img/a6.jpg",
+              "img/a5.jpg",
+              "img/a3.jpg",
+            ],
+            [
+              "img/a10.jpg",
+              "img/a8.jpg",
+              "img/a7.jpg",
+              "img/a5.jpg",
+              "img/a4.jpg",
+            ],
+            [
+              "img/a10.jpg",
+              "img/a9.jpg",
+              "img/a7.jpg",
+              "img/a6.jpg",
+              "img/a4.jpg",
+            ],
+          ];
+          break;
+      }
+      break;
+  }
 
   const gridContainer = document.getElementById("cadre-memory");
   affichagePlateau();
@@ -71,9 +129,15 @@ switch (localStorage.getItem("type-memory")) {
     selected.forEach((imgElement) => {
       imgElement.classList.add("match");
       countMatch++;
-      console.log(countMatch);
-      if (countMatch == 20) {
-        alert("Cest gagné !");
+      if (localStorage.getItem("taille") === "4x5") {
+        if (countMatch == 20) {
+          alert("Cest gagné !");
+        }
+      }
+      if (localStorage.getItem("taille") === "4x3") {
+        if (countMatch == 12) {
+          alert("Cest gagné !");
+        }
       }
     });
   };

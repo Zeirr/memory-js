@@ -25,16 +25,16 @@ function init() {
       $inputs.forEach((input) => {
         switch (input.id) {
           case "username":
-            if (validateUser) {
+            if (validateUser(input.value)) {
               user.username = input.value;
             } else {
-              alert("Nom d'utilisateur doit avoir au moins 3 caractères.");
+              alert("le nom d'utilisateur doit avoir au moins 3 caractères.");
               isValid = false;
             }
 
             break;
           case "password":
-            if (validatePassword) {
+            if (validatePassword(input.value)) {
               user.password = input.value;
             } else {
               alert(
@@ -45,7 +45,7 @@ function init() {
 
             break;
           case "email":
-            if (validateEmail) {
+            if (validateEmail(input.value)) {
               user.email = input.value;
             } else {
               alert("L'email doit être valide.");
@@ -53,7 +53,8 @@ function init() {
             }
             break;
           default:
-            console.error("Erreur de saisie");
+            alert("Erreur de saisie");
+
             break;
         }
       });
@@ -78,8 +79,6 @@ function init() {
             window.location.href = "connection.html";
           }, 1200);
         }
-      } else {
-        alert("Erreur de saisie");
       }
     });
 
@@ -92,14 +91,14 @@ function init() {
       return;
     }
     switch (true) {
-      case faiblePasswords(password):
-        modifBalise.innerHTML = "Force du mot de passe : Faible";
+      case fortPasswords(password):
+        modifBalise.innerHTML = "Force du mot de passe : Fort";
         break;
       case moyenPasswords(password):
         modifBalise.innerHTML = "Force du mot de passe : Moyen";
         break;
-      case fortPasswords(password):
-        modifBalise.innerHTML = "Force du mot de passe : Fort";
+      case faiblePasswords(password):
+        modifBalise.innerHTML = "Force du mot de passe : Faible";
         break;
     }
   });
