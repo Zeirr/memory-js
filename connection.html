@@ -11,23 +11,41 @@
     <ul class="ul-navbar">
       <li class="li-navbar"><a href="index.html">Accueil</a></li>
       <li class="li-navbar"><a href="inscription.html">S'inscrire</a></li>
-      <li class="li-navbar" aria-current="page"><a href="connection.html">Se connecter</a></li>
+      <li class="li-navbar" aria-current="page">
+        <a href="connection.html">Se connecter</a>
+      </li>
       <li class="li-navbar"><a href="profil.html">Profil</a></li>
       <li class="li-navbar">
         <a href="play.html">Jouer</a>
       </li>
     </ul>
-    <div class="cadre-pres">
-      
-  <div class="form"><form id="connect-form">
-    <label for="username">Nom d'utilisateur</label>
-    <input type="text" id="username" required placeholder="3 caractères minimum" autocomplete="username">
-	
-    <label for="password">Mot de passe</label>
-    <input type="password" id="password" required placeholder="Votre mot de passe" autocomplete="current-password"/>
-	
-    <button>Submit</button>
-  </form></div>
+    <div class="cadre-inscription">
+      <div class="inscription">
+        <h1 class="titreFormulaire">Connexion</h1>
+        <div class="form">
+          <form id="connect-form">
+            <label for="username">Nom d'utilisateur</label>
+            <input
+              type="text"
+              id="username"
+              required
+              placeholder="3 caractères minimum"
+              autocomplete="username"
+            />
+
+            <label for="password">Mot de passe</label>
+            <input
+              type="password"
+              id="password"
+              required
+              placeholder="Votre mot de passe"
+              autocomplete="current-password"
+            />
+
+            <button>Submit</button>
+          </form>
+        </div>
+      </div>
     </div>
 
     <script type="module" src="js/connection.js"></script>

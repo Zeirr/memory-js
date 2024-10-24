@@ -7,8 +7,25 @@ function validatePassword(password) {
     password
   );
 }
-function validateUser(username){
-    return /^.{3,}$/.test(username);
+function faiblePasswords(password) {
+  return /^.{1,5}$/.test(password);
+}
+function moyenPasswords(password) {
+  return /^(?=.*[0-9]|.*[!@#$%^&*])[A-Za-z0-9!@#$%^&*]{7,}$/.test(password);
+}
+function fortPasswords(password) {
+  return /^(?=.*[0-9])(?=.*[!@#$%^&*])[A-Za-z0-9!@#$%^&*]{10,}$/.test(password);
 }
 
-export { validateEmail, validatePassword, validateUser };
+function validateUser(username) {
+  return /^.{3,}$/.test(username);
+}
+
+export {
+  validateEmail,
+  validatePassword,
+  validateUser,
+  faiblePasswords,
+  moyenPasswords,
+  fortPasswords
+};

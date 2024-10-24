@@ -1,4 +1,11 @@
-import { validateEmail, validatePassword, validateUser } from "./validate.js";
+import {
+  validateEmail,
+  validatePassword,
+  validateUser,
+  faiblePasswords,
+  moyenPasswords,
+  fortPasswords,
+} from "./validate.js";
 
 window.onload = init;
 
@@ -35,7 +42,7 @@ function init() {
               );
               isValid = false;
             }
-            
+
             break;
           case "email":
             if (validateEmail) {
@@ -51,8 +58,49 @@ function init() {
         }
       });
       if (isValid) {
-        localStorage.setItem(`users`, JSON.stringify(user));
-        alert("Inscription réussie");
-      }else{alert("Erreur de saisie");}
+        // Récupérer les utilisateurs existants depuis localStorage
+        let users = JSON.parse(localStorage.getItem(`users`)) || [];
+        // Vérifier si le nom d'utilisateur ou l'email existe déjà
+        const utilisateurExistant = users.find(
+          (existingUser) =>
+            existingUser.username === user.username ||
+            existingUser.email === user.email
+        );
+        if (utilisateurExistant) {
+          alert("Utilisateur ou email déjà existant");
+        } else {
+          // Ajouter le nouvel utilisateur
+          users.push(user);
+          // Stocker la liste mise à jour
+          localStorage.setItem("users", JSON.stringify(users));
+          alert("Inscription réussie, redirection ...");
+          setTimeout(() => {
+            window.location.href = "connection.html";
+          }, 1200);
+        }
+      } else {
+        alert("Erreur de saisie");
+      }
     });
+
+  const input = document.getElementById("password");
+  input.addEventListener("input", function () {
+    let password = input.value;
+    let modifBalise = document.getElementById("difficultPassword");
+    if (password === "") {
+      modifBalise.innerText = "";
+      return;
+    }
+    switch (true) {
+      case faiblePasswords(password):
+        modifBalise.innerHTML = "Force du mot de passe : Faible";
+        break;
+      case moyenPasswords(password):
+        modifBalise.innerHTML = "Force du mot de passe : Moyen";
+        break;
+      case fortPasswords(password):
+        modifBalise.innerHTML = "Force du mot de passe : Fort";
+        break;
+    }
+  });
 }

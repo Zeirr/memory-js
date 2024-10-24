@@ -8,4 +8,7 @@ function flattenAndShuffle(array) {
   }
   return flatArray; // Retourner le tableau mélangé
 }
+
+
+
 export { flattenAndShuffle };

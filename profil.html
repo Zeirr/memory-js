@@ -30,26 +30,27 @@
         /><br />
         <ul class="texte-profil">
           <p>Nom d'utilisateur</p>
-          <p>***</p>
-          <hr>
+          <p id="nomUtilisateur">***</p>
+          
           <p>email</p>
-          <p>***</p>
-          <hr>
+          <p id="emailUtilisateur">***</p>
+          
 
-          <label for="tailles">Choisissez le memory :</label>
-          <select name="Taille-memory" id="taille">
-            <option value="taille1">Dinosaures</option>
-            <option value="taille2">Légumes</option>
+          <label for="selectMemory">Choisissez le memory :</label>
+          <select name="selectMemory" id="selectMemory">
+            <option value="Dinosaures">Dinosaures</option>
+            <option value="animaux">Animaux</option>
           </select>
 
-          <label for="tailles">Choisissez la taille du memory :</label>
+          <label for="taille">Choisissez la taille du memory :</label>
           <select name="Taille-memory" id="taille">
-            <option value="taille1">2x2</option>
-            <option value="taille2">3x3</option>
-            <option value="taille3">4x4</option>
-            <option value="taille4">4x5</option>
+            <option value="2x2">2x2</option>
+            <option value="3x3">3x3</option>
+            <option value="4x4">4x4</option>
+            <option value="4x5">4x5</option>
           </select>
-          <button>Enregistrez l'option</button>
+          <br>
+          <button id="enregistrer">ENREGISTRER</button>
         </ul>
       </div>
     </div>

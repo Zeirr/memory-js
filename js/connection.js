@@ -41,10 +41,28 @@ function init() {
         }
       });
       if (isValid) {
-        localStorage.setItem(`users`, JSON.stringify(user));
-        alert("Connexion réussie");
+        // Récupérer les utilisateurs existants depuis localStorage
+        let users = JSON.parse(localStorage.getItem(`users`)) || [];
+        // Vérifier si le nom d'utilisateur ou l'email existe déjà
+        const utilisateurExistant = users.find(
+          (existingUser) =>
+            existingUser.username === user.username ||
+            existingUser.password === user.password
+        );
+        if (utilisateurExistant) {
+          
+          sessionStorage.setItem("username", user.username);
+          sessionStorage.setItem("email", utilisateurExistant.email);
+          alert("Connexion réussie");
+          setTimeout(() => {
+            window.location.href = "profil.html";
+          }, 1200);
+        } else {
+          alert("Utilisateur inconnue ou mot de pass incorrect");
+        }
       } else {
         alert("Erreur de saisie");
       }
     });
 }
+
