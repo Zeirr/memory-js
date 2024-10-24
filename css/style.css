@@ -84,6 +84,7 @@ p.gras {
 }
 .selected {
   transform: rotateY(360deg);
+transition: 2s;
 }
 .form {
   color: rgb(236, 240, 241);
