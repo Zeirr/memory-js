@@ -9,9 +9,12 @@ ul.ul-navbar {
   overflow: hidden;
   background-color: rgb(230, 126, 34);
   border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
 }
 li {
   color: rgb(236, 240, 241);
+  flex: 1 1 auto;
 }
 li a {
   display: block;
@@ -37,7 +40,8 @@ img {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
+  width: 100%;
+  max-width: 500px;
 }
 
 h1 {
@@ -66,7 +70,7 @@ p.gras {
   max-width: 960px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 16px;
 }
 .card {
@@ -97,10 +101,9 @@ transition: 2s;
 }
 .divButton {
   display: grid;
-  width: auto;
-  height: 300px;
+  width: 100%;
+  height: auto;
   max-width: 300px;
-  max-height: 300px;
   background-color: rgb(44, 62, 80);
   padding: 20px;
   text-align: center;
@@ -117,7 +120,8 @@ transition: 2s;
 .profil {
   display: flex;
   height: auto;
-  width: 50vw;
+  width: 90%;
+  max-width: 500px;
   background-color: rgb(44, 62, 80);
   padding: 20px;
   text-align: center;
