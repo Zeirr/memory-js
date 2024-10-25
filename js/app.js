@@ -3,7 +3,7 @@ import { flattenAndShuffle } from "./function.js";
 window.onload = init;
 
 function init() {
-  //   // Initialisation d'un tableau 4x5
+
   let firstGuess = "";
   let countMatch = 0;
   let secondGuess = "";
@@ -87,6 +87,12 @@ function init() {
           break;
       }
       break;
+      default :          tableJeu = [
+        ["img/1.jpg", "img/1.jpg", "img/2.jpg", "img/2.jpg", "img/3.jpg"],
+        ["img/9.jpg", "img/8.jpg", "img/6.jpg", "img/5.jpg", "img/3.jpg"],
+        ["img/10.jpg", "img/8.jpg", "img/7.jpg", "img/5.jpg", "img/4.jpg"],
+        ["img/10.jpg", "img/9.jpg", "img/7.jpg", "img/6.jpg", "img/4.jpg"],
+      ];
   }
 
   const gridContainer = document.getElementById("cadre-memory");
@@ -171,7 +177,11 @@ function init() {
     let clicked = event.target;
 
     // Do not allow the grid section itself to be selected; only select divs inside the grid
-    if (clicked.nodeName === "SECTION" || clicked === previousTarget || clicked.classList.contains("match")) {
+    if (
+      clicked.nodeName === "SECTION" ||
+      clicked === previousTarget ||
+      clicked.classList.contains("match")
+    ) {
       return;
     }
 
